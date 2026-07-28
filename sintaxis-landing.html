@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sintaxis — Sitios web, landings y sistemas a medida</title>
+<meta name="description" content="Sintaxis: diseño de sitios web, landing pages, Google Ads y sistemas a medida para tu negocio. Proceso claro, precios de referencia y acompañamiento real.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet-950:#170B2E;
+    --violet-900:#241344;
+    --violet-850:#2C1854;
+    --violet-800:#382066;
+    --violet-700:#4A2C82;
+    --celeste-400:#3FC5F0;
+    --celeste-300:#7DD8F5;
+    --celeste-200:#BCEBFA;
+    --ink-100:#F3EFFC;
+    --ink-300:#C9BEE0;
+    --ink-500:#9686B8;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --sans:'Manrope', system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--violet-900);
+    color:var(--ink-100);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--mono);margin:0;letter-spacing:-0.01em;}
+  p{margin:0;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+
+  :focus-visible{outline:2px solid var(--celeste-300);outline-offset:3px;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--celeste-300);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{content:"//";color:var(--ink-500);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(23,11,46,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:72px;
+  }
+  .logo{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:1.25rem;
+    display:flex;align-items:center;gap:2px;
+    text-decoration:none;
+  }
+  .logo .bracket{color:var(--celeste-400);}
+  .navlinks{display:flex;align-items:center;gap:32px;}
+  .navlinks a{
+    font-size:0.94rem;
+    text-decoration:none;
+    color:var(--ink-300);
+    transition:color .15s ease;
+  }
+  .navlinks a:hover{color:var(--ink-100);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;
+    border-radius:8px;
+    padding:12px 22px;
+    text-decoration:none;
+    border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease;
+    font-size:0.94rem;
+  }
+  .btn-primary{
+    background:var(--celeste-400);
+    color:var(--violet-950);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(63,197,240,0.55);}
+  .btn-ghost{
+    border-color:rgba(255,255,255,0.18);
+    color:var(--ink-100);
+  }
+  .btn-ghost:hover{border-color:var(--celeste-300);color:var(--celeste-300);}
+  .navcta{display:flex;align-items:center;gap:18px;}
+  .burger{display:none;background:none;border:none;color:var(--ink-100);padding:8px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-200px;right:-160px;
+    width:520px;height:520px;
+    background:radial-gradient(circle, rgba(63,197,240,0.20), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:760px;position:relative;}
+  .hero h1{
+    font-size:clamp(2.3rem, 5vw, 3.6rem);
+    line-height:1.12;
+    margin:20px 0 24px;
+    font-weight:700;
+  }
+  .hero h1 .hl{color:var(--celeste-300);}
+  .cursor{
+    display:inline-block;width:0.5em;height:0.85em;
+    background:var(--celeste-400);
+    margin-left:4px;
+    animation:blink 1.1s steps(1) infinite;
+    vertical-align:-0.08em;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion: reduce){.cursor{animation:none;}}
+
+  .hero p.lead{
+    font-size:1.15rem;
+    color:var(--ink-300);
+    max-width:560px;
+    margin-bottom:36px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+
+  .code-card{
+    margin-top:64px;
+    background:var(--violet-850);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:14px;
+    padding:22px 26px;
+    font-family:var(--mono);
+    font-size:0.92rem;
+    max-width:520px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.5);
+  }
+  .code-card .dots{display:flex;gap:6px;margin-bottom:16px;}
+  .code-card .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.15);}
+  .code-line{color:var(--ink-300);}
+  .code-line .kw{color:var(--celeste-300);}
+  .code-line .str{color:#F2C8A0;}
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:620px;margin-bottom:56px;}
+  .section-head h2{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    margin:14px 0 14px;
+    font-weight:700;
+  }
+  .section-head p{color:var(--ink-300);font-size:1.05rem;}
+  .alt{background:var(--violet-950);}
+
+  /* ---------- SERVICES (bento) ---------- */
+  .services-bento{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    grid-template-rows:auto auto;
+    gap:20px;
+  }
+  .service-card{
+    background:var(--violet-850);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:20px;
+    padding:34px 32px;
+    display:flex;flex-direction:column;
+    transition:transform .18s ease, border-color .18s ease;
+  }
+  .service-card:hover{transform:translateY(-4px);border-color:rgba(63,197,240,0.35);}
+  .service-tag{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--violet-950);
+    background:var(--celeste-300);
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:999px;
+    font-weight:700;
+    margin-bottom:20px;
+    width:fit-content;
+  }
+  .service-card h3{font-size:1.3rem;margin-bottom:12px;font-weight:700;}
+  .service-card p.desc{color:var(--ink-300);font-size:0.96rem;margin-bottom:20px;}
+  .service-card ul{margin-top:auto;display:flex;flex-direction:column;gap:10px;}
+  .service-card li{
+    font-family:var(--mono);
+    font-size:0.86rem;
+    color:var(--ink-100);
+  }
+  .service-card li span.comment{color:var(--ink-500);}
+
+  /* tarjeta destacada: WordPress / presencia — es lo que más piden, ocupa el doble */
+  .service-feature{
+    grid-column:1 / 2;
+    grid-row:1 / 3;
+    justify-content:flex-end;
+  }
+  .service-feature h3{font-size:1.7rem;}
+  .browser-mock{
+    background:var(--violet-950);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    overflow:hidden;
+    margin-bottom:28px;
+  }
+  .browser-mock .bar{
+    display:flex;align-items:center;gap:6px;
+    padding:10px 14px;
+    background:rgba(255,255,255,0.03);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .browser-mock .bar span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);}
+  .browser-mock .body{padding:20px;display:flex;flex-direction:column;gap:10px;}
+  .browser-mock .line{height:10px;border-radius:4px;background:rgba(255,255,255,0.08);}
+  .browser-mock .line.w1{width:55%;background:var(--celeste-400);opacity:0.55;}
+  .browser-mock .line.w2{width:85%;}
+  .browser-mock .line.w3{width:70%;}
+  .browser-mock .thumbs{display:flex;gap:10px;margin-top:4px;}
+  .browser-mock .thumb{flex:1;height:38px;border-radius:6px;background:rgba(63,197,240,0.12);border:1px solid rgba(63,197,240,0.25);}
+
+  /* tarjetas secundarias: visibilidad y a medida */
+  .service-side{grid-column:2 / 3;padding:26px 26px;}
+  .service-side-a{grid-row:1 / 2;}
+  .service-side-b{grid-row:2 / 3;}
+  .service-icon{
+    width:40px;height:40px;
+    border-radius:10px;
+    background:rgba(63,197,240,0.12);
+    border:1px solid rgba(63,197,240,0.3);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .service-icon svg{width:20px;height:20px;stroke:var(--celeste-300);}
+  .service-side h3{font-size:1.12rem;}
+  .service-side p.desc{font-size:0.9rem;margin-bottom:16px;}
+  .service-side ul{gap:8px;}
+  .service-side li{font-size:0.8rem;}
+
+  @media (max-width: 880px){
+    .services-bento{grid-template-columns:1fr;}
+    .service-feature, .service-side{grid-column:1/2;grid-row:auto;}
+  }
+
+  /* ---------- PROCESO ---------- */
+  .process{
+    display:flex;
+    flex-direction:column;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  .step:last-child{border-bottom:1px solid rgba(255,255,255,0.08);}
+  .step .num{
+    font-family:var(--mono);
+    font-size:1.3rem;
+    color:var(--celeste-300);
+    font-weight:700;
+  }
+  .step h3{font-size:1.12rem;margin-bottom:6px;font-weight:700;}
+  .step p{color:var(--ink-300);font-size:0.95rem;}
+
+  /* ---------- SOBRE NOSOTROS ---------- */
+  .about-intro{max-width:720px;margin-bottom:56px;}
+  .about-intro .statement{
+    font-family:var(--mono);
+    font-size:clamp(1.3rem, 2.4vw, 1.7rem);
+    font-weight:700;
+    line-height:1.45;
+    margin-bottom:22px;
+  }
+  .about-intro .statement .hl{color:var(--celeste-300);}
+  .about-intro p{color:var(--ink-300);font-size:1.02rem;max-width:600px;}
+
+  .chain{
+    display:flex;
+    align-items:stretch;
+    gap:0;
+  }
+  .chain-link{
+    flex:1;
+    position:relative;
+    background:var(--violet-850);
+    border-radius:16px;
+    padding:26px 22px;
+    border-top:3px solid var(--accent, var(--celeste-400));
+  }
+  .chain-link + .chain-link{margin-left:36px;}
+  .chain-link::before{
+    content:"";
+    position:absolute;
+    left:-36px;top:50%;
+    width:36px;height:1px;
+    background:repeating-linear-gradient(to right, var(--ink-500) 0 6px, transparent 6px 12px);
+  }
+  .chain-link .step-label{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--ink-500);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:12px;
+  }
+  .chain-link .name{font-family:var(--mono);font-weight:700;font-size:1.15rem;color:var(--ink-100);}
+  .chain-link .role{color:var(--ink-500);font-size:0.82rem;margin:4px 0 12px;}
+  .chain-link .blurb{font-size:0.88rem;color:var(--ink-300);}
+
+  @media (max-width: 880px){
+    .chain{flex-direction:column;gap:20px;}
+    .chain-link + .chain-link{margin-left:0;}
+    .chain-link::before{display:none;}
+  }
+
+  /* ---------- INCLUYE ---------- */
+  .includes{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .include-item{
+    display:flex;align-items:flex-start;gap:12px;
+    background:var(--violet-850);
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:0.92rem;
+  }
+  .include-item .check{color:var(--celeste-400);font-weight:700;font-family:var(--mono);}
+
+  /* ---------- PLANES ---------- */
+  .plans{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .plan{
+    background:var(--violet-850);
+    border-radius:16px;
+    padding:30px 26px;
+    border:1px solid rgba(255,255,255,0.07);
+    display:flex;flex-direction:column;
+  }
+  .plan.featured{border-color:var(--celeste-400);box-shadow:0 0 0 1px var(--celeste-400);}
+  .plan .plan-name{font-family:var(--mono);color:var(--celeste-300);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;}
+  .plan .price{font-size:2rem;font-family:var(--mono);font-weight:700;margin:14px 0 4px;}
+  .plan .price .note{font-size:0.72rem;color:var(--ink-500);font-family:var(--sans);display:block;margin-top:4px;}
+  .plan ul{margin:22px 0;display:flex;flex-direction:column;gap:10px;flex-grow:1;}
+  .plan li{font-size:0.9rem;color:var(--ink-300);}
+  .plan li::before{content:"— ";color:var(--celeste-400);}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  .faq-item:last-child{border-bottom:1px solid rgba(255,255,255,0.08);}
+  .faq-q{
+    width:100%;
+    background:none;border:none;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 0;
+    color:var(--ink-100);
+    font-size:1.02rem;
+    font-weight:600;
+    text-align:left;
+  }
+  .faq-q .plus{
+    font-family:var(--mono);
+    color:var(--celeste-300);
+    font-size:1.2rem;
+    transition:transform .2s ease;
+    flex-shrink:0;
+    margin-left:20px;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
+  }
+  .faq-a p{color:var(--ink-300);padding-bottom:22px;font-size:0.96rem;max-width:640px;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{
+    background:linear-gradient(135deg, var(--violet-800), var(--violet-700));
+    border-radius:24px;
+    padding:64px 48px;
+    text-align:center;
+    margin:0 24px;
+  }
+  .final-cta h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:16px;}
+  .final-cta p{color:var(--ink-300);margin-bottom:32px;font-size:1.05rem;}
+  .final-cta .hero-ctas{justify-content:center;}
+
+  footer{
+    padding:56px 0 40px;
+    border-top:1px solid rgba(255,255,255,0.07);
+    margin-top:40px;
+  }
+  .footer-grid{
+    display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;
+  }
+  .footer-grid .logo{margin-bottom:10px;}
+  footer .muted{color:var(--ink-500);font-size:0.86rem;}
+  .footer-links{display:flex;gap:28px;flex-wrap:wrap;}
+  .footer-links a{color:var(--ink-300);text-decoration:none;font-size:0.9rem;}
+  .footer-links a:hover{color:var(--celeste-300);}
+
+  @media (max-width: 880px){
+    .navlinks{display:none;}
+    .burger{display:block;}
+    .services-grid, .includes, .plans{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .team{grid-template-columns:1fr 1fr;}
+    section{padding:64px 0;}
+    .hero{padding:56px 0 64px;}
+    .final-cta{padding:44px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo"><span class="bracket">&lt;</span>S<span class="bracket">/&gt;</span></a>
+    <div class="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">Preguntas</a>
+    </div>
+    <div class="navcta">
+      <a class="btn btn-primary" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Escribinos</a>
+      <button class="burger" aria-label="Abrir menú">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow">sintaxis — agencia de desarrollo web</span>
+      <h1>Tu negocio, <span class="hl">en línea</span> y funcionando de verdad<span class="cursor"></span></h1>
+      <p class="lead">Armamos sitios, landings, campañas y sistemas a medida. Con un proceso claro que podés seguir de punta a punta, y precios de referencia desde el primer mensaje.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+        <a class="btn btn-ghost" href="#proceso">Ver cómo trabajamos</a>
+      </div>
+
+      <div class="code-card" aria-hidden="true">
+        <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="code-line"><span class="kw">const</span> negocio = {</div>
+        <div class="code-line">&nbsp;&nbsp;visibilidad: <span class="str">"landing + ads"</span>,</div>
+        <div class="code-line">&nbsp;&nbsp;presencia: <span class="str">"sitio en WordPress"</span>,</div>
+        <div class="code-line">&nbsp;&nbsp;operacion: <span class="str">"sistema a medida"</span>,</div>
+        <div class="code-line">};</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">servicios</span>
+        <h2>¿Qué necesita tu negocio hoy?</h2>
+        <p>Tres caminos posibles, según de dónde estés arrancando.</p>
+      </div>
+      <div class="services-bento">
+        <div class="service-card service-feature">
+          <div class="browser-mock" aria-hidden="true">
+            <div class="bar"><span></span><span></span><span></span></div>
+            <div class="body">
+              <div class="line w1"></div>
+              <div class="line w2"></div>
+              <div class="line w3"></div>
+              <div class="thumbs"><div class="thumb"></div><div class="thumb"></div><div class="thumb"></div></div>
+            </div>
+          </div>
+          <span class="service-tag">Presencia</span>
+          <h3>Potenciá tu negocio</h3>
+          <p class="desc">Un sitio institucional en WordPress, simple de administrar, para tener presencia profesional todos los días del año. Es el servicio que más pedimos armar.</p>
+          <ul>
+            <li><span class="comment">//</span> Sitio institucional en WordPress</li>
+            <li><span class="comment">//</span> Catálogo de productos o servicios</li>
+            <li><span class="comment">//</span> Autoadministrable, lo editás vos</li>
+          </ul>
+        </div>
+
+        <div class="service-card service-side service-side-a">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7-7 18-3-7-8-4z"/></svg>
+          </div>
+          <span class="service-tag">Visibilidad</span>
+          <h3>¿Querés que te conozcan?</h3>
+          <p class="desc">Landing pages pensadas para convertir y campañas de Google Ads para aparecer justo cuando te están buscando.</p>
+          <ul>
+            <li><span class="comment">//</span> Landing pages a medida</li>
+            <li><span class="comment">//</span> Google Ads: armado y gestión</li>
+          </ul>
+        </div>
+
+        <div class="service-card service-side service-side-b">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          </div>
+          <span class="service-tag">A medida</span>
+          <h3>Sistemas a medida</h3>
+          <p class="desc">Para cuando necesitás una herramienta, no una web: stock, pedidos, envíos. Lo programamos para tu operación puntual.</p>
+          <ul>
+            <li><span class="comment">//</span> Gestión de stock</li>
+            <li><span class="comment">//</span> Pedidos y envíos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">proceso</span>
+        <h2>Cómo trabajamos</h2>
+        <p>Cinco pasos, siempre en el mismo orden. Vas a saber en qué etapa está tu proyecto en todo momento.</p>
+      </div>
+      <div class="process">
+        <div class="step">
+          <span class="num">01</span>
+          <div><h3>Nos contás tu idea</h3><p>Charlamos sobre tu negocio, definimos alcance y te pasamos un presupuesto claro.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <div><h3>Relevamos tu negocio</h3><p>Entendemos objetivos, contenido y estilo antes de tocar una línea de código.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <div><h3>Diseñamos y desarrollamos</h3><p>Armamos tu proyecto con revisiones en el camino, no una sorpresa al final.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <div><h3>Revisás y ajustamos</h3><p>Vemos la demo juntos y hacemos los cambios que hagan falta antes de publicar.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">05</span>
+          <div><h3>Publicamos y te acompañamos</h3><p>Entregamos accesos, te capacitamos y quedamos disponibles para lo que necesites.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" class="alt">
+    <div class="wrap">
+      <div class="about-intro">
+        <span class="eyebrow">nosotros</span>
+        <p class="statement" style="margin-top:14px;">Somos Sintaxis: un equipo chico, a propósito. <span class="hl">Tu proyecto pasa por las mismas cuatro manos</span>, de punta a punta — nada se tercioriza ni se pierde en el camino.</p>
+        <p>No vendemos plantillas genéricas. Antes de programar, alguien se sienta a entender tu negocio de verdad — y recién ahí definimos si te conviene un sitio simple, una landing, o algo hecho a medida.</p>
+      </div>
+      <div class="chain">
+        <div class="chain-link" style="--accent:#66A85C;">
+          <div class="step-label">01 · Te escucha</div>
+          <div class="name">Alex</div>
+          <div class="role">Comercial y coordinación</div>
+          <div class="blurb">Tu primer contacto. Cierra alcance, precio y fecha — y no te suelta la mano hasta la entrega.</div>
+        </div>
+        <div class="chain-link" style="--accent:#8E6BBF;">
+          <div class="step-label">02 · Entiende tu negocio</div>
+          <div class="name">Paula</div>
+          <div class="role">Relevamiento de cliente</div>
+          <div class="blurb">Antes de programar, se sienta con vos a entender qué necesitás de verdad. No arrancamos sin esto.</div>
+        </div>
+        <div class="chain-link" style="--accent:#4E8FD4;">
+          <div class="step-label">03 · Lo construye</div>
+          <div class="name">Carlos</div>
+          <div class="role">Desarrollo en WordPress</div>
+          <div class="blurb">Arma sitios institucionales y tiendas online, pensados para que después los manejes vos.</div>
+        </div>
+        <div class="chain-link" style="--accent:#D2695F;">
+          <div class="step-label">03 · Lo construye</div>
+          <div class="name">Mateo</div>
+          <div class="role">Desarrollo a medida</div>
+          <div class="blurb">Cuando el proyecto necesita código a medida — landings, sistemas propios — lo arma desde cero.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="incluye">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">todo proyecto incluye</span>
+        <h2>Lo básico, ya resuelto</h2>
+        <p>Esto viene incluido sin importar qué servicio elijas.</p>
+      </div>
+      <div class="includes">
+        <div class="include-item"><span class="check">✓</span> Dominio y hosting el primer año</div>
+        <div class="include-item"><span class="check">✓</span> Certificado SSL</div>
+        <div class="include-item"><span class="check">✓</span> Botón de WhatsApp</div>
+        <div class="include-item"><span class="check">✓</span> Diseño responsive (celular, tablet, PC)</div>
+        <div class="include-item"><span class="check">✓</span> Formulario de contacto</div>
+        <div class="include-item"><span class="check">✓</span> Capacitación para que lo edites vos</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="planes" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">planes</span>
+        <h2>Precios de referencia</h2>
+        <p>Puntos de partida — el presupuesto final depende del alcance de cada proyecto. [Completar con precios reales de Sintaxis]</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <span class="plan-name">Landing</span>
+          <div class="price">$ [XX.XXX]<span class="note">pago único</span></div>
+          <ul>
+            <li>Una página, un objetivo</li>
+            <li>Formulario + WhatsApp</li>
+            <li>Optimizada para conversión</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Consultar</a>
+        </div>
+        <div class="plan featured">
+          <span class="plan-name">Sitio WordPress</span>
+          <div class="price">$ [XX.XXX]<span class="note">pago único</span></div>
+          <ul>
+            <li>Hasta 5 secciones</li>
+            <li>Autoadministrable</li>
+            <li>Catálogo básico opcional</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Consultar</a>
+        </div>
+        <div class="plan">
+          <span class="plan-name">Sistema a medida</span>
+          <div class="price">A presupuestar<span class="note">según alcance</span></div>
+          <ul>
+            <li>Stock, pedidos o envíos</li>
+            <li>Relevamiento previo incluido</li>
+            <li>Acompañamiento post-entrega</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">preguntas frecuentes</span>
+        <h2>Antes de escribirnos</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">¿Cuánto tarda un proyecto? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Depende del alcance: una landing suele estar lista en 1-2 semanas; un sitio institucional o un sistema a medida, entre 3 y 6 semanas.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Voy a poder editar el sitio después? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Sí. Los sitios en WordPress son autoadministrables y te capacitamos para que puedas cambiar textos e imágenes vos mismo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Me conviene WordPress o algo a medida? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Si necesitás una presencia simple y manejable, WordPress. Si tu negocio necesita algo puntual (stock, pedidos, integraciones), lo evaluamos juntos en la primera charla.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Qué incluye el precio? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Dominio y hosting del primer año, SSL, diseño responsive, WhatsApp, formulario de contacto y capacitación para administrarlo vos.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Hacen mantenimiento después de la entrega? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Sí, ofrecemos mantenimiento opcional. No es obligatorio: si preferís manejarlo vos, te dejamos todo listo para eso.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="final-cta">
+      <h2>¿Charlamos sobre tu proyecto?</h2>
+      <p>Contanos qué necesitás y te respondemos con un presupuesto claro.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <a href="#" class="logo"><span class="bracket">&lt;</span>S<span class="bracket">/&gt;</span></a>
+      <p class="muted">Sitios, landings y sistemas a medida.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="https://wa.me/5491100000000" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:24px;">
+    <p class="muted">© 2026 Sintaxis. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(other){
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // mobile burger -> simple toggle of nav links as a stacked menu
+  var burger = document.querySelector('.burger');
+  var navlinks = document.querySelector('.navlinks');
+  burger.addEventListener('click', function(){
+    var isShown = navlinks.style.display === 'flex';
+    navlinks.style.display = isShown ? 'none' : 'flex';
+    navlinks.style.position = 'absolute';
+    navlinks.style.top = '72px';
+    navlinks.style.left = '0';
+    navlinks.style.right = '0';
+    navlinks.style.background = 'var(--violet-950)';
+    navlinks.style.flexDirection = 'column';
+    navlinks.style.padding = '20px 24px';
+    navlinks.style.gap = '18px';
+    navlinks.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+  });
+</script>
+
+</body>
+</html>
